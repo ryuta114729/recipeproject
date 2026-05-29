@@ -1,0 +1,107 @@
+<a href="{% url 'recipe_list' %}">
+    ← レシピ一覧へ戻る
+</a>
+
+<hr>
+
+<h1>マイページ</h1>
+ 
+<form method="POST" action="{% url 'logout' %}">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        ログアウト
+    </button>
+
+</form>
+
+<hr>
+
+<h2>
+    ユーザー名：
+    {{ request.user.username }}
+</h2>
+ 
+<hr>
+ 
+<h2>投稿したレシピ</h2>
+ 
+{% for recipe in recipes %}
+    
+<hr>
+ 
+<h3>
+    {{ recipe.title }}
+</h3>
+ 
+<p>
+    コスト：
+    {{ recipe.cost }}円
+</p>
+ 
+<a href="{% url 'recipe_detail' recipe.id %}">
+    詳細
+</a>
+
+<br><br>
+
+<a href="{% url 'recipe_update' recipe.id %}">
+    更新
+</a>
+
+<a href="{% url 'recipe_delete' recipe.id %}">
+    削除
+</a>
+
+
+{% empty %}
+ 
+<p>
+    投稿したレシピはありません
+</p>
+ 
+{% endfor %}
+ 
+<hr>
+ 
+<h2>投稿したレビュー</h2>
+ 
+{% for review in reviews %}
+ 
+<hr>
+ 
+<h3>
+    {{ review.title }}
+</h3>
+ 
+<p>
+    評価：
+    ★{{ review.rating }}
+</p>
+ 
+<p>
+    {{ review.recipe.title }}
+</p>
+ 
+<a href="{% url 'recipe_detail' review.recipe.id %}">
+    レシピへ
+</a>
+
+<br><br>
+ 
+<a href="{% url 'review_update' review.id %}">
+    更新
+</a>
+ 
+<a href="{% url 'review_delete' review.id %}">
+    削除
+</a>
+ 
+{% empty %}
+ 
+<p>
+    投稿したレビューはありません
+</p>
+ 
+{% endfor %}

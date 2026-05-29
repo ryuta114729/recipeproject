@@ -1,0 +1,33 @@
+<a href="{% url 'recipe_list' %}">
+    ← レシピ一覧へ戻る
+</a>
+
+<hr>
+
+<h1>お気に入り一覧</h1>
+ 
+{% for favorite in favorites %}
+ 
+<hr>
+ 
+
+<h2>
+    {{ favorite.recipe.title }}
+</h2>
+ 
+<p>
+    コスト：
+    {{ favorite.recipe.cost }}円
+</p>
+ 
+<a href="{% url 'recipe_detail' favorite.recipe.id %}">
+    詳細
+</a>
+ 
+{% empty %}
+ 
+<p>
+    お気に入りがありません
+</p>
+ 
+{% endfor %}

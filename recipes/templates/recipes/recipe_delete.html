@@ -1,0 +1,21 @@
+<h1>レシピ削除</h1>
+ 
+<p>
+    {{ recipe.title }} を削除しますか？
+</p>
+ 
+<form method="POST">
+ 
+    {% csrf_token %}
+ 
+    <button type="submit">
+        削除
+    </button>
+ 
+</form>
+
+<br>
+
+<a href="{% url 'mypage' %}">
+    マイページへ戻る
+</a>

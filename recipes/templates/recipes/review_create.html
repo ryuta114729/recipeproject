@@ -1,0 +1,18 @@
+<h1>レビュー投稿</h1>
+ 
+<h2>
+    {{ recipe.title }}
+</h2>
+ 
+<form method="POST"
+    enctype="multipart/form-data">
+ 
+    {% csrf_token %}
+ 
+    {{ form.as_p }}
+ 
+    <button type="submit">
+        投稿
+    </button>
+ 
+</form>

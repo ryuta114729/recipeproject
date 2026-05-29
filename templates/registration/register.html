@@ -1,0 +1,17 @@
+<h1>新規登録</h1>
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        登録
+    </button>
+
+</form>
+
+<br>
+
+<a href="{% url 'login' %}">
+    ログイン画面へ
+</a>
